@@ -1,3 +1,4 @@
+import sys
 from stats import num_words
 from stats import character_count
 from stats import dict_report
@@ -7,7 +8,10 @@ def get_book_text(f):
         return book.read()
 
 def main():
-    file = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        return sys.exit(1)
+    file = sys.argv[1]
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {file}")
     print("----------- Word Count ----------")
@@ -17,7 +21,7 @@ def main():
     for item in temp1:
         print(f"{item['char']}: {item['num']}")
     print("============= END ===============")
-    return 0
+    return sys.exit(0)
 
 
 main()
