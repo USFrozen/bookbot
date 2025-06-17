@@ -11,3 +11,11 @@ def character_count(book):
         except KeyError:
             chars[symbol] = 1
     return chars
+
+def dict_report(chars):
+    newlist = []
+    for char in chars:
+        num = chars[char]
+        if char.isalpha():
+            newlist.append({'char': char, 'num': num})
+    return sorted(newlist, key=lambda x: x['num'], reverse=True)
